@@ -1,38 +1,34 @@
-# sv
+### Dependencies
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+* Have node 20+ installed
+* Have pnpm installed
+* Run
 
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
+```
+pnpm install
 ```
 
-## Developing
+### Setting up local database
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+* Run
 
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+```
+pnpm dlx wrangler d1 execute auth-js-12807 --local --file 'db/v0001_up.sql'
 ```
 
-## Building
+This will create an SQLite database in the `.wrangler/state/v3/d1/miniflare-******/` folder.
 
-To create a production version of your app:
+This DB will be used to store user data.
 
-```bash
-npm run build
+
+### Setting up environment variables
+
+* Copy the `.env.example` file to `.env` and fill in the values.
+
+### Running the project
+
+* Run
+
 ```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+pnpm start
+```
